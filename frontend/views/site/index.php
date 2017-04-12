@@ -3,11 +3,24 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+$this->registerJs(
+    "$('#Cteam').click(function(){
+        $.ajax({
+            url: '/team/create',
+            data:{'id':'3322'}
+        })
+        .done(function(data){
+            $('#h13').append('<p>'+data.data.teamSn+'<p>')
+        })
+    })"
+)
 ?>
+
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <input id="Cteam" type="button" class="btn btn-success" value="创建队伍">
+        <h1 id="h13">Congratulations!</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
