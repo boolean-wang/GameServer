@@ -11,6 +11,6 @@ class TestController extends BaseController
     public function actionTest()
     {
         $id = $this->get('id');
-        $this->GatewayReturn($id, 'welcome:' . $id);
+        $this->sendToUid($id,'message', 'welcome:' . $id);
     }
 }
