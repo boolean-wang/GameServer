@@ -43,6 +43,11 @@ return [
             'rules' => [
             ],
         ],
+        'assetManager' => [
+            'forceCopy' => true, //强制刷新 不论是否已经发布
+//            'linkAssets' => true, //不能再 VirtualBox 共享文件夹使用
+//            'appendTimestamp' => true, //禁止前端缓存 生产环境不合适 还是加版本号靠谱
+        ],
 
     ],
     'params' => $params,
