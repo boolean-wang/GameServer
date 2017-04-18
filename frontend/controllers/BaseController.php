@@ -1,7 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\User;
 use frontend\behaviors\WorkmanBehavior;
+use frontend\service\BaseService;
 use Yii;
 use yii\web\Controller;
 
@@ -30,16 +32,27 @@ class BaseController extends Controller
     public function JsonReturn($data)
     {
         header('Content-Type:application/json; charset=utf-8');
-        echo json_encode($data);
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
         exit;
     }
-    
+
+    /**
+     * 进入角色后绑定用户
+     */
     public function actionBind()
     {
         $uid = Yii::$app->user->id;
         $client_id = $this->post('client_id');
-//        // client_id与uid绑定
-        $this->bindUid($client_id, $uid);
-//        Gateway::joinGroup($client_id, $group_id);
+        // client_id与uid绑定
+        $data = $this->bindUid($client_id, $uid);
+        $this->JsonReturn($data);
+    }
+
+    /**
+     * 新用户加入
+     */
+    public function actionJoin()
+    {
+
     }
 }

@@ -1,0 +1,116 @@
+    .main{
+        width: 1024px;
+        height: 541px;
+        border:1px solid red;
+        background-image: url('./img/maps/main_map.jpg');
+        display: block;
+        position: relative;
+    }
+    .player_head{
+        height: 60px;
+        width: 180px;
+        margin: 10px 10px 10px 10px;
+        background-image: url('./img/roleInfoImg.png');
+        position: absolute;
+        background-size: cover;
+    }
+
+    .join {
+        height: 50px;
+        line-height:50px;
+        /*width: 150px;*/
+        color:  	#00FF00;
+        font-size: 30px;
+        margin-top: 150px;
+        margin-left: 400px;
+        display: none;
+        position: absolute;
+    }
+
+    .detail{
+        height: 420px;
+        width: 360px;
+        border: 1px solid red;
+        background-color: red;
+        position: absolute;
+        margin: 85px 0 0 0;
+        display: none;
+
+    }
+
+    .bootom_bar{
+        width: 500px;
+        height:100px;
+        border: 1px solid red;
+        margin-top: 440px;
+        margin-left: 400px;
+        position: relative;
+    }
+
+    .player
+    {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        margin-left: 30px;
+        margin-top: 20px;
+        background-image: url('./img/roleBtn.png');
+        background-size: cover;
+
+    }
+
+    .pack
+    {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        margin-left: 110px;
+        margin-top: 20px;
+        background-image: url('./img/backpackBtn.png');
+        background-size: cover;
+
+    }
+
+    .beast
+    {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        margin-left: 190px;
+        margin-top: 20px;
+        background-image: url('./img/jinjieBtn.png');
+        background-size: cover;
+    }
+
+    .task
+    {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        margin-left: 270px;
+        margin-top: 20px;
+        background-image: url('./img/missionBtn.png');
+        background-size: cover;
+    }
+
+    .attack
+    {
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        margin-left: 350px;
+        margin-top: 20px;
+        background-image: url('./img/warBtn.png');
+        background-size: cover;
+    }
+
+    #user_id{
+        width: 30px;
+        height: 30px;
+        /*border: 1px solid blue;*/
+        background-color: blue;
+        z-index: 9;
+        margin-top: 392px;
+        margin-left: 255px;
+        position: absolute;
+    }

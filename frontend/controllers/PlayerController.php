@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\service\PlayerService;
 use Yii;
 use common\models\Player;
 use common\models\PlayerSearch;
@@ -14,6 +15,7 @@ use yii\filters\VerbFilter;
  */
 class PlayerController extends BaseController
 {
+    public $enableCsrfValidation =false;
     /**
      * @inheritdoc
      */
@@ -130,6 +132,45 @@ class PlayerController extends BaseController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * 初始化角色数据  最后跳转到游戏场景
+     */
+    public function actionInit()
+    {
+        $uId = $this->post('uId');
+        $userId = Yii::$app->user->id;
+        //初始化用户角色存放到redis当中
+
+        $data = PlayerService::getInit($uId, $userId);
+
+//        setcookie("name", "Larry", time()+3600);
+
+        //跳转之前需要设置一个 加密的cookie吧
+//        Yii::$app->response->cookies->add(new \yii\web\Cookie([
+//            'name' => 'Unicode',
+//            'value' => '2222',
+//            'expire' => 50,
+//            'path' => '/'
+//
+//        ]));
+//        setcookie('unicode', '000097', time()+3000, '/');
+        return $this->redirect('/scene/index');
+//
+//        return $this->JsonReturn([
+//            'code' => 200,
+//            'msg' => $data['msg'],
+//            'data' => $data['data']
+//        ]);
+    }
+
+    public function actionDetail()
+    {
+        $user_id = Yii::$app->user->id;
+        $data = PlayerService::getPlayerDetail($user_id);
+
+        return $this->JsonReturn($data);
     }
 
     /**

@@ -32,7 +32,11 @@ $(function(){
             $(this).click(function(){
                 var id = $(this).find('div p:eq(0)').attr('uId');//php的做法是给这个div 一个a标签 构造好要跳转的url
                 console.log(id);
-                window.location = 'http://www.baidu.com?id='+id;
+                //ajax 请求 player/init
+                $.post('/player/init', {uId: id}, function(data) {
+                    console.log(data);
+                });
+
             })
         }
     })
