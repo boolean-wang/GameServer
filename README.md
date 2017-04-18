@@ -4,7 +4,7 @@ GameServer Rpg 游戏服务端
 workman 实现双向实时通信 <br/>
 redis 实现游戏角色属性快速计算 <br/>
 yii 作为MVC框架<br/>
-
+![示例图片](https://github.com/boolean-wang/GameServer/blob/master/frontend/resource/example/2017-04-19_013247.png)
 代码结构
 -------------------
 
