@@ -48,4 +48,13 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'yiisoft/yii2-redis' => 
+  array (
+    'name' => 'yiisoft/yii2-redis',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@yii/redis' => $vendorDir . '/yiisoft/yii2-redis',
+    ),
+  ),
 );

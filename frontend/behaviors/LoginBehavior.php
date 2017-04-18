@@ -40,17 +40,19 @@ class LoginBehavior extends Behavior
             }
         }
         /**
-         * 登录检查
+         * 主要为了 兼容 console  migrate 使用了 try catch
          */
-        if(Yii::$app->user->isGuest){
-            //base/bind 捣乱了 权限认证 跳转到首页  首页又ajax自动加载  base/bind 权限认证又不行了
-            Yii::$app->user->loginRequired(); //卧槽 这个方法对着
-            return Yii::$app->getResponse()->redirect(Url::to('/site/index'));//不能加return了
-//            return Yii::$app->getResponse()->redirect(Url::to('/site/index'));
-
-        }else{
-            return true;
-        }
+        try{
+            if(Yii::$app->user->isGuest){
+                //base/bind 捣乱了 权限认证 跳转到首页  首页又ajax自动加载  base/bind 权限认证又不行了
+                return Yii::$app->getResponse()->redirect(Url::to('/site/index'));
+            }else{
+                return true;
+            }
 //        $event->isValid = false;
+        }catch (\Exception $e){
+            return false;//console 也是用的这套代码 也会执行到这里
+        }
+
     }
 }

@@ -38,9 +38,10 @@ class Events
         // 向当前client_id发送数据 
         Gateway::sendToClient($client_id, json_encode(array(
             'type'      => 'init',
-            'client_id' => $client_id
+            'message' => '新用户登录', //还不能随便多个data数据??
+            'client_id' => $client_id, //还不能随便多个data数据??
         )));
-        // 向所有人发送
+        // 向所有人发送 也可以在业务逻辑里面写
 //        Gateway::sendToAll("$client_id login\n");
     }
     
@@ -59,7 +60,20 @@ class Events
     * @param int $client_id 连接id
     */
    public static function onClose($client_id) {
-       // 向所有人发送 
-       GateWay::sendToAll("$client_id logout");
+//       // 向所有人发送
+//       $u_id = $_SESSION[$client_id];//不在一个代码里 不可能拿到session redis还凑合
+
+       $redis = new Redis();
+       $redis->connect('127.0.0.1', 6379);
+       $u_id = $redis->get($client_id);
+
+       Gateway::sendToAll(json_encode([
+           'type' => 'logout',
+           'message' => $client_id . '退出游戏',
+           'client_id' => $client_id,
+           'u_id' => $u_id,
+       ]));
+
+       $redis->del($client_id);
    }
 }
