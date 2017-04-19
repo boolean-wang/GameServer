@@ -20,7 +20,6 @@
 //declare(ticks=1);
 
 use \GatewayWorker\Lib\Gateway;
-
 /**
  * 主逻辑
  * 主要是处理 onConnect onMessage onClose 三个方法
@@ -28,6 +27,8 @@ use \GatewayWorker\Lib\Gateway;
  */
 class Events
 {
+    public static $db = null;
+
     /**
      * 当客户端连接时触发
      * 如果业务不需此回调可以删除onConnect
@@ -54,11 +55,11 @@ class Events
         // 向所有人发送 
         Gateway::sendToAll("$client_id said $message");
    }
-   
-   /**
-    * 当用户断开连接时触发
-    * @param int $client_id 连接id
-    */
+
+    /**
+     * @param $client_id
+     * @throws Exception
+     */
    public static function onClose($client_id) {
 //       // 向所有人发送
 //       $u_id = $_SESSION[$client_id];//不在一个代码里 不可能拿到session redis还凑合
@@ -74,6 +75,29 @@ class Events
            'u_id' => $u_id,
        ]));
 
+       //清理角色信息
+       $x = $redis->get($u_id. ':x');//需要对数据库进行操作啊
+       $y = $redis->get($u_id. ':y');
+
+       self::updatePlayerLocation($u_id, $x, $y);
+
+
        $redis->del($client_id);
+       $redis->del($u_id);
+       $redis->del($u_id. ':x');//需要对数据库进行操作啊
+       $redis->del($u_id. ':y');
+       $redis->lRem('onlinePlayers',$u_id, 0);//删除列表
+   }
+
+   public static function updatePlayerLocation($player_id, $x, $y)
+   {
+       if(empty(self::$db)){
+           self::$db = mysqli_connect('127.0.0.1', 'root', '', 'game_server', '3306');
+           self::$db->set_charset("utf8");
+
+       }
+
+       $sql = "update player set x=$x, y=$y WHERE id=$player_id";
+       $reslut = self::$db->query($sql);
    }
 }

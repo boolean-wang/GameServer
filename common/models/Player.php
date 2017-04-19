@@ -33,6 +33,8 @@ use Yii;
  * @property int $magic_point 魔法点数
  * @property int $speed_point 速度点数
  * @property int $potential 潜能点
+ * @property string $x x
+ * @property string $y y
  */
 class Player extends \yii\db\ActiveRecord
 {

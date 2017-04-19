@@ -38,3 +38,50 @@
 2017-04-19 00:13:23 pid:29970 Workerman[start.php] Stopping ...
 2017-04-19 00:13:24 pid:29970 Workerman[start.php] has been stopped
 2017-04-19 00:13:24 pid:29997 Workerman[start.php] stop success
+2017-04-19 04:28:33 pid:30381 Workerman[start.php] start in DAEMON mode
+2017-04-19 22:13:17 pid:31006 Workerman[start.php] restart 
+2017-04-19 22:13:17 pid:31006 Workerman[start.php] is stoping ...
+2017-04-19 22:13:17 pid:30384 Workerman[start.php] Stopping ...
+2017-04-19 22:13:17 pid:30384 Workerman[start.php] has been stopped
+2017-04-19 22:13:17 pid:31006 Workerman[start.php] stop success
+2017-04-19 22:46:16 pid:31006 Workerman[start.php] Stopping ...
+2017-04-19 22:46:16 pid:31006 Workerman[start.php] has been stopped
+2017-04-19 22:46:22 pid:31040 Workerman[start.php] start in DAEMON mode
+2017-04-19 22:46:39 pid:31047 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 22:46:39 pid:31043 worker[YourAppBusinessWorker:31047] exit with status 65280
+2017-04-19 22:47:11 pid:31053 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 22:47:12 pid:31043 worker[YourAppBusinessWorker:31053] exit with status 65280
+2017-04-19 22:47:40 pid:31045 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 22:47:41 pid:31043 worker[YourAppBusinessWorker:31045] exit with status 65280
+2017-04-19 22:48:56 pid:31056 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 22:48:56 pid:31043 worker[YourAppBusinessWorker:31056] exit with status 65280
+2017-04-19 22:49:08 pid:31057 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 22:49:08 pid:31043 worker[YourAppBusinessWorker:31057] exit with status 65280
+2017-04-19 23:04:59 pid:31058 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:04:59 pid:31043 worker[YourAppBusinessWorker:31058] exit with status 65280
+2017-04-19 23:05:29 pid:31044 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:05:29 pid:31043 worker[YourAppBusinessWorker:31044] exit with status 65280
+2017-04-19 23:06:16 pid:31046 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:06:16 pid:31043 worker[YourAppBusinessWorker:31046] exit with status 65280
+2017-04-19 23:07:00 pid:31066 Workerman[start.php] restart 
+2017-04-19 23:07:00 pid:31066 Workerman[start.php] is stoping ...
+2017-04-19 23:07:00 pid:31043 Workerman[start.php] Stopping ...
+2017-04-19 23:07:00 pid:31043 Workerman[start.php] has been stopped
+2017-04-19 23:07:00 pid:31066 Workerman[start.php] stop success
+2017-04-19 23:07:17 pid:31073 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:07:17 pid:31069 worker[YourAppBusinessWorker:31073] exit with status 65280
+2017-04-19 23:07:59 pid:31071 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:07:59 pid:31069 worker[YourAppBusinessWorker:31071] exit with status 65280
+2017-04-19 23:08:28 pid:31080 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:08:28 pid:31069 worker[YourAppBusinessWorker:31080] exit with status 65280
+2017-04-19 23:09:13 pid:31079 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:09:13 pid:31069 worker[YourAppBusinessWorker:31079] exit with status 65280
+2017-04-19 23:10:16 pid:31096 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:10:16 pid:31069 worker[YourAppBusinessWorker:31096] exit with status 65280
+2017-04-19 23:14:42 pid:31081 WORKER EXIT UNEXPECTED E_ERROR Call to a member function set_charset() on a non-object in /mnt/shared/gameServer/frontend/GatewayWorker/Applications/YourApp/Events.php on line 99
+2017-04-19 23:14:42 pid:31069 worker[YourAppBusinessWorker:31081] exit with status 65280
+2017-04-19 23:14:56 pid:31101 Workerman[start.php] restart 
+2017-04-19 23:14:56 pid:31101 Workerman[start.php] is stoping ...
+2017-04-19 23:14:56 pid:31069 Workerman[start.php] Stopping ...
+2017-04-19 23:14:56 pid:31069 Workerman[start.php] has been stopped
+2017-04-19 23:14:56 pid:31101 Workerman[start.php] stop success

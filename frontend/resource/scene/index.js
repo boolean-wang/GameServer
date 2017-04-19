@@ -53,7 +53,14 @@
         var userId = $('.data_player').text();
         $('#'+userId).animate({marginLeft: xx, marginTop: yy}, 3000,function(){
             //移动到达之后 向服务器发送自己的坐标
+            console.log('到达位置'+ xx + '---' + yy);
+            $('.l-x').text('x:'+xx);
+            $('.l-y').text('y:'+yy);
             //服务器拿到数据 向所有用户发送一个updateLocation的数据
+            $.post('/player/move', {xx: xx, yy: yy}, function(data, textStatus, xhr) {
+                /*optional stuff to do after success */
+                console.log('服务器操作成功' + data);
+            });
         });
 
 
@@ -81,13 +88,23 @@ var Player = {
                 join.fadeOut('800');
             }, 1500);
         });
+    },
+    //更新其它用户的位置 不包括自己
+    move: function (data) {
+        var player_id = data.data.player_id;
+        var x = data.data.x;
+        var y = data.data.y;
+        $('#'+player_id).animate({marginLeft: x, marginTop: y}, 3000,function(){
+            //移动到达之后 向服务器发送自己的坐标
+            console.log( player_id+ '到达位置'+ x + '---' + y);
+        });
     }
+
 };
 
 var init = {
     //创建一个新的box
     createBox: function (player_id, player_name, x, y) {
-
         $('.main').prepend('<div id='+ player_id +' name='+ player_name +'></div>');
         $('#'+player_id).css({
             width: '30px',
@@ -106,17 +123,36 @@ var init = {
             margin: '-1px 29px',
             position: 'absolute',
             display: 'none',
-            fontSize: '5px',
+            fontSize: '10px',
             color: 'white',
             opacity: '0.8'
-
         });
+
+        var type = arguments[4] ? arguments[4] : false;
+        if(type){
+            $('#'+player_id).css({
+                backgroundColor: 'yellow'
+            })
+        }
+
         $('#'+player_id).mouseenter(function(){
            $('.'+user_desc).css('display', 'block');
             return false;
         }).mouseleave(function(){
             $('.'+user_desc).css('display', 'none');
             return false
+        });
+    },
+    fillAttr:function (player_id, player_name, x, y) {
+        $('.player_head').append('<div><p>id:'+ player_id +'</p><p>'+ player_name +'</p><p><span class=l-x>x:'+ x +'</span><span class=l-y>y:'+ y +'</span></p></div>');
+        $('.player_head div').css({
+            color: 'yellow',
+            opacity: '0.8',
+            position: 'absolute',
+            margin: '65px 0px 0px 6px'
+        });
+        $('.player_head div span').css({
+            padding: '5px'
         });
     }
 };
