@@ -7,6 +7,7 @@ use Yii;
 use common\models\Player;
 use common\models\PlayerSearch;
 use frontend\controllers\BaseController;
+use yii\base\Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -141,28 +142,11 @@ class PlayerController extends BaseController
     {
         $uId = $this->post('uId');
         $userId = Yii::$app->user->id;
-        //初始化用户角色存放到redis当中
+        //初始化用户角色存放到redis当中 没有返回
 
-        $data = PlayerService::getInit($uId, $userId);
+        PlayerService::getInit($uId, $userId);
 
-//        setcookie("name", "Larry", time()+3600);
-
-        //跳转之前需要设置一个 加密的cookie吧
-//        Yii::$app->response->cookies->add(new \yii\web\Cookie([
-//            'name' => 'Unicode',
-//            'value' => '2222',
-//            'expire' => 50,
-//            'path' => '/'
-//
-//        ]));
-//        setcookie('unicode', '000097', time()+3000, '/');
         return $this->redirect('/scene/index');
-//
-//        return $this->JsonReturn([
-//            'code' => 200,
-//            'msg' => $data['msg'],
-//            'data' => $data['data']
-//        ]);
     }
 
     public function actionDetail()
@@ -171,6 +155,26 @@ class PlayerController extends BaseController
         $data = PlayerService::getPlayerDetail($user_id);
 
         return $this->JsonReturn($data);
+    }
+
+    /**
+     * 移动
+     */
+    public function actionMove()
+    {
+        $user_id = Yii::$app->user->id;
+        $x = $this->post('xx');
+        $y = $this->post('yy');
+        try{
+            PlayerService::setPlayerLocation($user_id, $x, $y);
+            $data = [
+                'code' => '200',
+                'msg' => '移动成功'
+            ];
+            return $this->JsonReturn($data);
+        }catch (Exception $e){
+            return $this->JsonReturn(['code' => '400', 'msg' => '移动失败']);
+        }
     }
 
     /**

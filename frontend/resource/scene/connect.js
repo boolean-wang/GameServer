@@ -15,15 +15,24 @@ ws.onmessage = function(e){
                 data: {client_id: data.client_id}
             })
             .done(function(data) {
-                console.log("success");
+                console.log(data);
                 data = $.parseJSON(data);
                 //调用初始化盒子
                 var player_id = data.data.player_Id;
                 var player_name = data.data.player_name;
-                // var x = data.data.x;
-                // var y = data.data.y;
-                init.createBox(player_id, player_name, 217, 489);
+                var x = data.data.x;
+                var y = data.data.y;
+                var inline_players = data.data.players;
+
+                //用户属性设置  头像、昵称
+                init.fillAttr(player_id, player_name, x, y);
+                //创建自己的盒子
+                init.createBox(player_id, player_name, x, y, true);
                 $('.data_player').text(player_id);
+                //初始化所有其它在线用户的盒子
+                for (var i=0; i<inline_players.length; i++){
+                    init.createBox(inline_players[i].player_Id, inline_players[i].player_name, inline_players[i].x, inline_players[i].y);
+                }
             })
             .fail(function() {
                 console.log("error");
@@ -33,6 +42,12 @@ ws.onmessage = function(e){
             console.log(data);
             //新用户加入  调用方法
             Player.notify(data);
+            break;
+        case 'notify_move':
+            console.log(data);
+            //可以封装一下移动的方法
+            Player.move(data);
+
             break;
         case 'logout':
             console.log('用户退出' + data);
